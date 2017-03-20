@@ -27,4 +27,7 @@ Route::get('/', function()
         return view('home');
     }
 });
+//Route::get('/store', 'PagesController@getStore');
+Route::get('/coupon', 'PagesController@getCoupon');
+Route::resource('/stores','StoreController');
 

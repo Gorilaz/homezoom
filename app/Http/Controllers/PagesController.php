@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-     public function index() {
-         
-        return view('auth/login');   
+      public function getCoupon(){
+        
+        return view('pages.coupon');       
     }
+    
+     public function getStore(){
+     
+        return view('pages.store');
+    }
+    
+  
+    
 }
