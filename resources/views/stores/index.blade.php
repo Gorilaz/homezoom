@@ -1,47 +1,57 @@
 @extends('main')
 @section('title','| Stores')
 @section('content')
-<div class="container">
 
-    <div class="page-header">
-        <h1>Stores</h1>
-    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>All Shops</h1>
+        </div>
 
-    <div>
-        <button class="btn btn-success btn-create">Create</button>
-          
-        <button type="button" class="btn btn-success btn-filter pull-right">Filter</button>
-       
-    </div>
-    <p></p>
-
-    <table class="table table-striped">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Domain</th>
-      
-            <th></th>
-        </tr>
-        @foreach( $stores as $store )
-            <tr data-id="{{ $store->id }}">
+        <div class="col-md-2">
+            <a href="{{ route('stores.create')}}" class="btn btn-primary  btn1-spacing">Create Shop</a>
+        </div>
+        <div class="col-md-12">
+            <hr>
+        </div>
+        
+    </div>  
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Domain</th>
+              
+                    <th></th>
+                </thead>
                 
-                <td>{{ $store->id }}</td>    
-                    	               
-                <td>{{ $store->slug }}</td>
-                <td>{{ $store->domain }}</td>  
+                <tbody>
+                      @foreach( $stores as $store )
+                        <tr>
+                            <td>{{ $store->id }}</td>  
+                           
+                            <td>{{ $store->slug }}</td>
+                            <td>{{ $store->domain }}</td>
+                            
 
-                <td class="tools">
-                    <button class="btn btn-sm btn-info btn-edit">Edit</button>
-                    <button class="btn btn-sm btn-danger btn-delete">Delete</button>
+                            <td><a  href="{{route('stores.edit',$store->id)}}" class="btn btn-default">Edit</a>
+                            <a href="{{route('stores.update',$store->id)}}" class="btn btn-default">Block</a></td>
+                            
+                        </tr>
 
-                </td>
-            </tr>
-        @endforeach        
-    </table>    
-    
-</div>
+                    @endforeach
+                </tbody>    
+                
+            </table>
+            <div class="text-center">
+              
+            </div>
+        </div>
+    </div>
 @endsection
+
+
 
 @section('scripts')
 <script type="text/javascript">
